@@ -10,11 +10,11 @@ max_input_time=3600
 max_execution_time=3600
 
 # NextCloud Path
-cesta=/var/www/html		 # Při změně cesty mimo /var/www/html bude nutná úprava konfigurace apache
+cesta=/var/www/html		 # DEFAULT PRO APACHE! 
 cesta_data=/var/nextcloud/data
 
 # Timezone
-nastavitpasmo=1
+nastavitpasmo=1               # ON/OFF
 casovepasmo=Europe/Prague
 
 # Network interface
@@ -71,7 +71,7 @@ GREEN="\033[1;32m"
 RED="\033[1;31m"
 NOCOLOR="\033[0m"
 
-if [ "$distro" = "Unknown distribuce" ]; then
+if [ "$distro" = "Neznámá distribuce" ]; then
 	echo Instalátor je určen pouze pro Debian 9/10, CentOS 7 a Ubuntu 18.04.
 	echo -e ${RED}Instalace byla zrušena.${NOCOLOR}
 	exit 1
