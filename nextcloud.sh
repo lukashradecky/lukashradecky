@@ -63,7 +63,7 @@ case "$distro" in
         ;;
 
 	*)
-	distro="Neznámá distribuce"
+	distro="nevim"
 	;;
 esac
 
@@ -71,9 +71,9 @@ GREEN="\033[1;32m"
 RED="\033[1;31m"
 NOCOLOR="\033[0m"
 
-if [ "$distro" = "Neznámá distribuce" ]; then
-	echo Instalátor je určen pouze pro Debian 9/10, CentOS 7 a Ubuntu 18.04.
-	echo -e ${RED}Instalace byla zrušena.${NOCOLOR}
+if [ "$distro" = "nevim" ]; then
+	echo Only Debian 9/10, CentOS 7 and Ubuntu 18.04 is supported.
+	echo -e ${RED}Bye.${NOCOLOR}
 	exit 1
 fi
 
@@ -82,7 +82,7 @@ fi
 check()
 {
 if [ $? != 0 ]; then
-	echo -e "${RED}- Chyba!${NOCOLOR} ${LINENO}"
+	echo -e "${RED}[ERR]${NOCOLOR} ${LINENO}"
 	echo "- Chyba! ${LINENO}" >> $log_cesta
 	exit 1
 else
@@ -92,21 +92,20 @@ fi
 
 #clear
 echo -e ${GREEN}--------------------------------------------------------------------------------
-echo www.forpsicloud.cz www.forpsi.com
 echo -e ${RED}NextCloud storage will be installed on your machine.
 echo 
 echo It includes installing Apache2, MySQL, PHP with extensions, certbot and Nextcloud.
 echo -e ${GREEN}--------------------------------------------------------------------------------
 echo
-echo -e ${NOCOLOR}IP adresa: $ip4 \($zarizeni\)
-echo -e Instalation folder: $cesta ${RED}\< current folder content will be deleted!${NOCOLOR}
+echo -e ${NOCOLOR}IP address: $ip4 \($zarizeni\)
+echo -e Installation folder: $cesta ${RED}\< current folder content will be deleted!${NOCOLOR}
 echo Data path: $cesta_data
 echo
 echo Files owner: $uzivatel:$skupina
 echo PHP config: memory_limit=$memory_limit, post_max_size=$post_max_size, upload_max_filesize=$upload_max_filesize, max_input_time=$max_input_time, max_execution_time=$max_execution_time
 echo Timezone: $casovepasmo
 echo
-echo Values may be changed by editing prompts in the script.
+echo Values may be changed by editing prompts in the script if needed.
 
 
 echo -e ${GREEN}
@@ -118,7 +117,7 @@ echo -e !Content of $cesta will be deleted!${NOCOLOR}
 read -p "Continue (y/n)? " CONT
 
 if [ "$CONT" != "y" ]; then
-	echo Instalace byla zrušena.
+	echo Bye.
 	exit 1;
 fi
 
